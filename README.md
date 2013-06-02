@@ -5,3 +5,6 @@ the files in `sundown-c/`.
 
 See [hackage](http://hackage.haskell.org/package/sundown) for
 documentation.
+
+
+This version is a forked `sundown` for haskell one, little modified in order to interpret the alt text of an image like its caption.
