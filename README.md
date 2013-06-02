@@ -8,3 +8,5 @@ documentation.
 
 
 This version is a forked `sundown` for haskell one, little modified in order to interpret the alt text of an image like its caption.
+
+It can only be installed by downloading this version and `cabal install`. Check dependencies, version numbers and it will be just fine.
