@@ -364,7 +364,11 @@ rndr_image(struct buf *ob, const struct buf *link, const struct buf *title, cons
 {
 	struct html_renderopt *options = opaque;
 	if (!link || !link->size) return 0;
+	BUFPUTSL(ob, "<span class=\"caption\">");
 
+	if (alt && alt->size)
+		escape_html(ob, alt->data, alt->size);
+	bufputs(ob, USE_XHTML(options) ? "\"/>" : "</span>");
 	BUFPUTSL(ob, "<img src=\"");
 	escape_href(ob, link->data, link->size);
 
@@ -373,11 +377,6 @@ rndr_image(struct buf *ob, const struct buf *link, const struct buf *title, cons
 		escape_html(ob, title->data, title->size); }
 
 	bufputs(ob, USE_XHTML(options) ? "\"/>" : "\">");
-	BUFPUTSL(ob, "<span class=\"caption\">");
-
-	if (alt && alt->size)
-		escape_html(ob, alt->data, alt->size);
-	bufputs(ob, USE_XHTML(options) ? "\"/>" : "</span>");
 	return 1;
 }
 
